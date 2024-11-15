@@ -16,12 +16,6 @@ export default function Home() {
           <ConnectButton
             client={client}
             wallets={[ inAppWallet ({
-              auth: {
-                options: [
-                  "email",
-                  "phone",
-                ]
-              }
             }
             ) ]}
             // appMetadata={{
