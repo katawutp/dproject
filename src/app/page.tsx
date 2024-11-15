@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { ConnectButton } from "thirdweb/react";
-import thirdwebIcon from "@public/thirdweb.svg";
+import dprojectIcon from "@public/Logo_DProject.svg";
 import { client } from "./client";
+import { inAppWallet } from "thirdweb/wallets";
 
 export default function Home() {
   return (
@@ -14,11 +15,25 @@ export default function Home() {
         <div className="flex justify-center mb-20">
           <ConnectButton
             client={client}
-            appMetadata={{
-              name: "Example App",
-              url: "https://example.com",
-            }}
+            wallets={[ inAppWallet ({
+              auth: {
+                options: [
+                  "email",
+                  "phone",
+                ]
+              }
+            }
+            ) ]}
+            // appMetadata={{
+            //   name: "Example App",
+            //   url: "https://example.com",
+            // }}
           />
+        </div>
+        <div className="flex justify-center mb-20">
+        <iframe
+	        src="https://ews.thirdweb.com/sdk/2022-08-12/embedded-wallet/export?clientId=29c831678d8dc64fa39318d15529fab6"
+        />
         </div>
 
         <ThirdwebResources />
@@ -31,18 +46,18 @@ function Header() {
   return (
     <header className="flex flex-col items-center mb-20 md:mb-20">
       <Image
-        src={thirdwebIcon}
+        src={dprojectIcon}
         alt=""
-        className="size-[150px] md:size-[150px]"
+        className="size-[200px] md:size-[200px] p-[20px]"
         style={{
           filter: "drop-shadow(0px 0px 24px #a726a9a8)",
         }}
       />
 
       <h1 className="text-2xl md:text-6xl font-semibold md:font-bold tracking-tighter mb-6 text-zinc-100">
-        thirdweb SDK
-        <span className="text-zinc-300 inline-block mx-1"> + </span>
-        <span className="inline-block -skew-x-6 text-blue-500"> Next.js </span>
+        D Project
+        <span className="text-zinc-300 inline-block mx-1">  -  </span>
+        <span className="inline-block -skew-x-6 text-blue-500"> Login </span>
       </h1>
 
       <p className="text-zinc-300 text-base">
@@ -59,23 +74,23 @@ function Header() {
 function ThirdwebResources() {
   return (
     <div className="grid gap-4 lg:grid-cols-3 justify-center">
-      <ArticleCard
+      {/* <ArticleCard
         title="thirdweb SDK Docs"
         href="https://portal.thirdweb.com/typescript/v5"
         description="thirdweb TypeScript SDK documentation"
-      />
+      /> */}
 
-      <ArticleCard
+      {/* <ArticleCard
         title="Components and Hooks"
         href="https://portal.thirdweb.com/typescript/v5/react"
         description="Learn about the thirdweb React components and hooks in thirdweb SDK"
-      />
+      /> */}
 
-      <ArticleCard
+      {/* <ArticleCard
         title="thirdweb Dashboard"
         href="https://thirdweb.com/dashboard"
         description="Deploy, configure, and manage your smart contracts from the dashboard."
-      />
+      /> */}
     </div>
   );
 }
